@@ -5,7 +5,7 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://www.wingio.xyz",
+    site: "https://www.iamw.ing",
     integrations: [sitemap(), svelte()],
 
     experimental: {

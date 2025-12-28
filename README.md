@@ -1,9 +1,9 @@
-# wingio.xyz
-This codebase contains the code for my personal website/portfolio hosted at [`wingio.xyz`](https://wingio.xyz).
+# iamw.ing
+This codebase contains the code for my personal website/portfolio hosted at [`iamw.ing`](https://iamw.ing).
 
 ## Badge
 I have an 88x31 badge available for anyone that wants to link to my site!
-You can access it via `https://wingio.xyz/88x31/badge.gif` or use `https://wingio.xyz/88x31/[frame].png` for a non-animated version.
+You can access it via `https://iamw.ing/88x31/badge.gif` or use `https://iamw.ing/88x31/[frame].png` for a non-animated version.
 
 [![Wing](https://wingio.xyz/88x31/badge.gif)](https://wingio.xyz)
 
@@ -12,7 +12,7 @@ You can access it via `https://wingio.xyz/88x31/badge.gif` or use `https://wingi
 > You must have git, node, and pnpm installed
 
 1. Clone this repository
-   - `git clone https://github.com/wingio/wingio.xyz && cd wingio.xyz`
+   - `git clone https://github.com/wingio/iamw.ing && cd iamw.ing`
 2. Install all dependencies
    - `pnpm i`
 3. Build the site
