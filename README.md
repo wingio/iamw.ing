@@ -5,7 +5,7 @@ This codebase contains the code for my personal website/portfolio hosted at [`ia
 I have an 88x31 badge available for anyone that wants to link to my site!
 You can access it via `https://iamw.ing/88x31/badge.gif` or use `https://iamw.ing/88x31/[frame].png` for a non-animated version.
 
-[![Wing](https://wingio.xyz/88x31/badge.gif)](https://wingio.xyz)
+[![Wing](https://iamw.ing/88x31/badge.gif)](https://iamw.ing)
 
 ## Build
 > [!NOTE]
