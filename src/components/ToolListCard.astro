@@ -15,7 +15,7 @@ import ComposeIcon from "@icons/libraries/compose.svg"
 import NextIcon from "@icons/libraries/nextjs.svg"
 ---
 
-<Card>
+<Card class="tools-card">
     <Label>IDEs</Label>
     <div class="tools">
         <InfoChip>
@@ -26,8 +26,6 @@ import NextIcon from "@icons/libraries/nextjs.svg"
             <VSCodeIcon slot="icon"/> VSCode
         </InfoChip>
     </div>
-
-    <br />
 
     <Label>Languages</Label>
     <div class="tools">
@@ -48,8 +46,6 @@ import NextIcon from "@icons/libraries/nextjs.svg"
         </InfoChip>
     </div>
 
-    <br />
-
     <Label>Frameworks</Label>
     <div class="tools">
         <InfoChip>
@@ -62,11 +58,14 @@ import NextIcon from "@icons/libraries/nextjs.svg"
     </div>
 </Card>
 
-<style>
+<style lang="scss">
+	:global(.tools-card) {
+        gap: 1em;
+    }
+
     .tools {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.8em;
-		margin-top: 1em;
 	}
 </style>
