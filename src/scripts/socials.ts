@@ -5,7 +5,7 @@ export const Socials = [
         baseUrl: "https://github.com/"
     },
     {
-        username: "wingio.xyz",
+        username: "iamw.ing",
         service: "Bluesky",
         baseUrl: "https://bsky.app/profile/"
     },
