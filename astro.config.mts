@@ -8,10 +8,6 @@ export default defineConfig({
     site: "https://iamw.ing",
     integrations: [sitemap(), svelte()],
 
-    experimental: {
-        svg: true
-    },
-
     vite: {
         css: {
             preprocessorOptions: {

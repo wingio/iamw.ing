@@ -8,13 +8,13 @@
         "preview": "astro preview"
     },
     "dependencies": {
-        "@astrojs/svelte": "^7.0.4",
-        "astro": "^5.1.8",
-        "sass": "^1.83.4",
-        "svelte": "^5.19.2"
+        "@astrojs/svelte": "^7.2.4",
+        "astro": "^5.16.6",
+        "sass": "^1.97.1",
+        "svelte": "^5.46.1"
     },
     "devDependencies": {
-        "@astrojs/sitemap": "^3.2.1",
-        "typescript": "^5.7.3"
+        "@astrojs/sitemap": "^3.6.0",
+        "typescript": "^5.9.3"
     }
 }
