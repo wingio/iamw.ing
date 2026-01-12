@@ -1,0 +1,48 @@
+---
+import Card from "@wing/components/Card.astro";
+import Footer from "@wing/components/Footer.astro";
+import Label from "@wing/components/Label.astro";
+import Layout from "@wing/layouts/Layout.astro";
+import NotFoundArt from "@wing/assets/notfound.svg"
+---
+
+<Layout title="Wing - 404" description="Page not found">
+	<Card id="404">
+		<Label>404</Label>
+
+		<h1 class="notfound-header">Page not found.</h1>
+        <p>Maybe you'll find what you're looking for over on my <a href="/">home page</a>.</p>
+
+        <NotFoundArt class="notfound-art" />
+	</Card>
+
+    <Footer />
+</Layout>
+
+<style>
+    h1 {
+        margin-bottom: 0;
+    }
+
+    .notfound-art {
+        color: var(--primary);
+        width: 100%;
+        max-height: min-content;
+        opacity: 0.4;
+    }
+</style>
+
+<script>
+    // Pick random header message
+    const messages = [
+        "Looking for something?",
+        "Page not found.",
+        "Are you lost?",
+        "Need a map?",
+        "Got turned around?",
+        "Wrong directions?"
+    ];
+
+    const header = document.querySelector(".notfound-header") as HTMLHeadingElement;
+    header.innerText = messages[Math.floor(Math.random() * messages.length)];
+</script>
