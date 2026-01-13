@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getTheme, setTheme } from "@wing/scripts/theme"
+    import { getTheme, setTheme } from "@scripts/theme"
 
     const darkThemes = ["dark", "mocha"]
     const lightThemes = ["light", "latte"]

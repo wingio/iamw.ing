@@ -1,5 +1,5 @@
 ---
-import avatar from "@wing/assets/avatar.jpeg"
+import avatar from "@assets/avatar.jpeg"
 import SocialsCard from "./SocialsCard.astro"
 import NowPlayingCard from "./NowPlayingCard.astro"
 ---
@@ -54,7 +54,7 @@ import NowPlayingCard from "./NowPlayingCard.astro"
 </style>
 
 <script>
-    import { DEFAULT_IMAGE_ID, getNowPlaying } from "@wing/scripts/lastfm";
+    import { DEFAULT_IMAGE_ID, getNowPlaying } from "@scripts/lastfm";
 
     function updateNowPlaying() {
         getNowPlaying()

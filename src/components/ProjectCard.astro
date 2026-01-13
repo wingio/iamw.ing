@@ -1,6 +1,6 @@
 ---
 import Card from "./Card.astro";
-import colors from "@wing/assets/langColors.json";
+import colors from "@assets/langColors.json";
 
 import Star from "@icons/star.svg"
 
@@ -34,7 +34,7 @@ const langColor = colors[language as keyof typeof colors] || "#000"
 
     <div class="meta">
         <div>
-            <Star size="14px" class="star" />
+            <Star width="14px" class="star" />
             <p>{stars}</p>
         </div>
 
