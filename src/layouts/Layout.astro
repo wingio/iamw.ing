@@ -33,7 +33,7 @@ const { title, description } = Astro.props;
 	
 	<body>
 		<script is:raw>
-			console.log("%cTry running catppuccin()!", "font-size: 2em; background-color: #11111b; color: #cdd6f4; padding: 1em")
+			console.log("%cTry running catppuccin()!", "font-size: 2em; background-color: #11111b; color: #cdd6f4; padding: 1em; border-radius: 1000px")
 
             let theme = localStorage.getItem("theme");
             if (!theme || !["light", "dark", "mocha", "latte"].includes(theme)) {
