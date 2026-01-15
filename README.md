@@ -21,4 +21,4 @@ You can access it via `https://iamw.ing/88x31/badge.gif` or use `https://iamw.in
 ## License
 All code here is all rights reserved with the exception of a few icons.
 
-Some icons from [Material Symbols](https://fonts.google.com/icons), licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html), are used in this project. © 2025 Google Inc.
+Some icons from [Material Symbols](https://fonts.google.com/icons), licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html), are used in this project. © 2026 Google Inc.
