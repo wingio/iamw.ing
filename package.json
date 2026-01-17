@@ -1,5 +1,5 @@
 {
-    "name": "wingio.xyz",
+    "name": "iamw.ing",
     "version": "0.2.0",
     "description": "My personal site",
     "scripts": {
@@ -8,13 +8,13 @@
         "preview": "astro preview"
     },
     "dependencies": {
-        "@astrojs/svelte": "^7.2.4",
-        "astro": "^5.16.6",
-        "sass": "^1.97.1",
-        "svelte": "^5.46.1"
+        "@astrojs/svelte": "^7.2.5",
+        "astro": "^5.16.11",
+        "sass": "^1.97.2",
+        "svelte": "^5.46.4"
     },
     "devDependencies": {
-        "@astrojs/sitemap": "^3.6.0",
+        "@astrojs/sitemap": "^3.7.0",
         "typescript": "^5.9.3"
     }
 }
