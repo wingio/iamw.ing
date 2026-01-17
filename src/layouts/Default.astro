@@ -1,6 +1,7 @@
 ---
-import Sidebar from "@components/Sidebar.astro";
+import Sidebar from "@layouts/components/Sidebar.astro";
 import "@styles/global.css";
+import Footer from "./components/Footer.astro";
 
 export interface Props {
     title: string;
@@ -53,11 +54,14 @@ const { title, description } = Astro.props;
 		
 		<main>
 			<div class="sidebar">
-				<Sidebar />
+				<Sidebar>
+					<slot name="sidebar" slot="sidebar" />
+				</Sidebar>
 			</div>
 			
 			<div class="content">
 				<slot />
+				<Footer />
 			</div>
 		</main>
 	</body>

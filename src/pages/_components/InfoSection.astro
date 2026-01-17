@@ -1,5 +1,5 @@
 ---
-import InfoChip from "./InfoChip.astro";
+import InfoChip from "@components/InfoChip.astro";
 import Person from "@icons/person.svg";
 import Location from "@icons/location.svg";
 import Clock from "@icons/clock.svg";
@@ -11,7 +11,7 @@ import Clock from "@icons/clock.svg";
     </InfoChip>
 
     <InfoChip>
-        <Clock slot="icon"/> EST <span>-</span> <span id="time"/>
+        <Clock slot="icon"/> EST <div class="time"><span>-</span> <span id="time"/></div>
     </InfoChip>
 
     <InfoChip>
@@ -20,6 +20,10 @@ import Clock from "@icons/clock.svg";
 </div>
 
 <script>
+    // Auto updating time doesn't exist without JS, so its set to display: none by default,
+    // if JS is enabled we can just instantly make it visible
+    (document.querySelector(".time") as HTMLDivElement)!.style.setProperty("display", "block");
+
     function updateTime() {
         var currentTime = new Date();
         var timeString = currentTime.toLocaleString('en-US', { timeStyle: "short", timeZone: "America/New_York" });
@@ -38,4 +42,8 @@ import Clock from "@icons/clock.svg";
 		gap: 0.8em;
 		margin-top: 1em;
 	}
+
+    .time {
+        display: none; /* Hide the time by default for users with JS disabled */
+    }
 </style>

@@ -1,10 +1,10 @@
 ---
-import Card from "./Card.astro"
-import Label from "./Label.astro"
+import Card from "@components/Card.astro"
+import Label from "@components/Label.astro"
 import MusicPlaceholder from "@assets/music.svg"
 ---
 
-<Card>
+<Card id="np-section">
     <Label>Listening To</Label>
     <div class="np">
         <div class="np-art-container">
@@ -19,6 +19,30 @@ import MusicPlaceholder from "@assets/music.svg"
     </div>
 </Card>
 
+<script>
+    import { DEFAULT_IMAGE_ID, getNowPlaying } from "@scripts/lastfm";
+
+    function updateNowPlaying() {
+        getNowPlaying()
+            .then((track) => {
+                document.getElementById("np-section")!.style.setProperty("display", typeof track != "undefined" ? "block" : "none");
+                document.getElementById("np-song")!.innerText = track?.name || "";
+                document.getElementById("np-artist")!.innerText = track?.artist?.["#text"] || "";
+
+                let artUrl = track?.image[3]?.["#text"];
+                let art = (document.getElementById("np-art") as HTMLImageElement)
+
+                art.src = artUrl || "";
+                art.alt = track?.name || "";
+                art.style.setProperty("display", artUrl?.includes(DEFAULT_IMAGE_ID) ? "none" : "block")
+                document.getElementById("np-placeholder")!.style.setProperty("display", artUrl?.includes(DEFAULT_IMAGE_ID) ? "block" : "none")
+            })
+    }
+
+    setInterval(updateNowPlaying, 10000)
+    updateNowPlaying()
+</script>
+
 <style lang="scss">
     .np {
         display: flex;
@@ -29,10 +53,15 @@ import MusicPlaceholder from "@assets/music.svg"
         --art-size: 2.7em;
     }
 
+    :global(#np-section) {
+        display: none;
+    }
+
     #np-art {
         width: var(--art-size);
         height: var(--art-size);
         border-radius: 20%;
+        display: none;
     }
 
     .np-art-container {

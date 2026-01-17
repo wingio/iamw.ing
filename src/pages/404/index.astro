@@ -1,12 +1,11 @@
 ---
 import Card from "@components/Card.astro";
-import Footer from "@components/Footer.astro";
 import Label from "@components/Label.astro";
-import Layout from "@layouts/Layout.astro";
+import Default from "@layouts/Default.astro";
 import NotFoundArt from "@assets/notfound.svg"
 ---
 
-<Layout title="Wing - 404" description="Page not found">
+<Default title="Wing - 404" description="Page not found">
 	<Card id="404">
 		<Label>404</Label>
 
@@ -15,9 +14,7 @@ import NotFoundArt from "@assets/notfound.svg"
 
         <NotFoundArt class="notfound-art" />
 	</Card>
-
-    <Footer />
-</Layout>
+</Default>
 
 <style>
     h1 {

@@ -1,7 +1,7 @@
 ---
-import Card from "./Card.astro";
-import Label from "./Label.astro";
-import SocialAccount from "./SocialAccount.astro";
+import Card from "@components/Card.astro";
+import Label from "@components/Label.astro";
+import SocialAccount from "@components/SocialAccount.astro";
 
 import Bluesky from "@icons/social/bluesky.svg";
 import Discord from "@icons/social/discord.svg";
@@ -15,23 +15,23 @@ import Mastodon from "@icons/social/mastodon.svg";
 
     <div class="content">
         <SocialAccount url="https://github.com/wingio">
-            <GitHub slot="icon" /> GitHub
+            <GitHub /> GitHub
         </SocialAccount>
 
         <SocialAccount url="https://bsky.app/profile/iamw.ing">
-            <Bluesky slot="icon" /> Bluesky
+            <Bluesky /> Bluesky
         </SocialAccount>
 
         <SocialAccount url="https://androiddev.social/@wing">
-            <Mastodon slot="icon" /> Mastodon
+            <Mastodon /> Mastodon
         </SocialAccount>
 
         <SocialAccount url="https://discord.com/users/298295889720770563">
-            <Discord slot="icon" /> Discord
+            <Discord /> Discord
         </SocialAccount>
 
         <SocialAccount url="mailto:Wing <wing@wingio.xyz>">
-            <Email slot="icon" /> Email
+            <Email /> Email
         </SocialAccount>
     </div>
 </Card>

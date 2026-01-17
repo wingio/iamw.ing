@@ -1,15 +1,19 @@
 ---
+import Friends from './_components/Friends.astro';
+import Projects from './_components/Projects.astro';
+import InfoSection from './_components/InfoSection.astro';
+import ToolListCard from './_components/ToolListCard.astro';
+import NowPlayingCard from './_components/NowPlayingCard.astro';
+
 import Card from '@components/Card.astro';
-import Footer from '@components/Footer.astro';
-import Friends from '@components/Friends.astro';
-import InfoSection from '@components/InfoSection.astro';
 import Label from '@components/Label.astro';
-import Projects from '@components/Projects.astro';
-import ToolListCard from '@components/ToolListCard.astro';
-import Layout from '@layouts/Layout.astro';
+
+import Default from '@layouts/Default.astro';
 ---
 
-<Layout title="Wing - Home" description="22 year old Android dev and an okay designer.">
+<Default title="Wing - Home" description="22 year old Android dev and an okay designer.">
+	<NowPlayingCard slot="sidebar" />
+
 	<Card id="about">
 		<Label>About</Label>
 
@@ -30,9 +34,7 @@ import Layout from '@layouts/Layout.astro';
 		<Label>Friends</Label>
 		<Friends />
 	</Card>
-
-	<Footer />
-</Layout>
+</Default>
 
 <style>
 	.projects {
