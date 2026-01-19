@@ -2,7 +2,7 @@
 import Card from "@components/Card.astro";
 import colors from "@assets/langColors.json";
 
-import Star from "@icons/star.svg"
+import Star from "@icons/star.svg";
 
 const {
     name,
@@ -22,42 +22,34 @@ avatarUrl.searchParams.set("size", "64");
 const langColor = colors[language as keyof typeof colors] || "#000" 
 ---
 
-<Card class="repoCard" data-url={html_url}>
-    <div class="author">
-        <img src={avatarUrl.toString()} width="20px" alt=""/>
+<a href={html_url}} target="_blank">
+    <Card class="repoCard">
+        <div class="author">
+            <img src={avatarUrl.toString()} width="20px" alt=""/>
 
-        {owner.login}
-    </div>
-    
-    <p class="name">{name}</p>
-    <span class="description">{description}</span>
-
-    <div class="meta">
-        <div>
-            <Star width="14px" class="star" />
-            <p>{stars}</p>
+            {owner.login}
         </div>
+        
+        <p class="name">{name}</p>
+        <span class="description">{description}</span>
 
-        <div>
-            <span class="lang" style=`--langColor:${langColor}` />
-            <p>{language}</p>
+        <div class="meta">
+            <div>
+                <Star width="14px" class="star" />
+                <p>{stars}</p>
+            </div>
+
+            <div>
+                <span class="lang" style=`--langColor:${langColor}` />
+                <p>{language}</p>
+            </div>
         </div>
-    </div>
-</Card>
-
-<script>
-    document.querySelectorAll(".repoCard").forEach(e => {
-        e.addEventListener("click", () => {
-            // @ts-ignore
-            window.open(e.dataset.url, "_blank")
-        })
-    })
-</script>
+    </Card>
+</a>
 
 <style lang="scss">
     :global(.repoCard) {
         transition: scale 0.2s;
-        cursor: pointer;
         position: relative;
 
         &:hover {
