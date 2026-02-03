@@ -14,7 +14,7 @@ import SocialsCard from "./SocialsCard.astro"
 
 <style lang="scss">
     .sidebar {
-        width: 15em;
+        width: 18em;
         display: flex;
         flex-direction: column;
         position: sticky;
@@ -22,10 +22,17 @@ import SocialsCard from "./SocialsCard.astro"
         gap: 2em;
     }
 
-    .avatar {
-        border-radius: 50%;
-        width: 15em;
+    a {
+        align-self: center;
+
+        .avatar {
+            border-radius: 50%;
+            width: 15em;
+            justify-self: center;
+        }
     }
+
+    
 
     @media screen and (max-width: 970px) {
 		.sidebar {
@@ -34,7 +41,6 @@ import SocialsCard from "./SocialsCard.astro"
 		}
 
         a {
-            align-self: center;
             padding: 0;
 
             .avatar {
