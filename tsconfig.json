@@ -5,11 +5,12 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@icons/*": ["./src/icons/*"],
-            "@components/*": ["./src/components/*"],
             "@assets/*": ["./src/assets/*"],
-            "@pages/*": ["./src/pages/*"],
+            "@components/*": ["./src/components/*"],
+            "@data/*": ["./src/data/*"],
+            "@icons/*": ["./src/icons/*"],
             "@layouts/*": ["./src/layouts/*"],
+            "@pages/*": ["./src/pages/*"],
             "@scripts/*": ["./src/scripts/*"],
             "@styles/*": ["./src/styles/*"],
         }

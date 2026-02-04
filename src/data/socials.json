@@ -1,0 +1,20 @@
+[
+    {
+        "username": "wingio",
+        "service": "GitHub",
+        "baseUrl": "https://github.com/",
+        "aliases": ["gh"]
+    },
+    {
+        "username": "iamw.ing",
+        "service": "Bluesky",
+        "baseUrl": "https://bsky.app/profile/",
+        "aliases": ["bsky"]
+    },
+    {
+        "username": "wing",
+        "service": "Mastodon",
+        "baseUrl": "https://androiddev.social/@",
+        "aliases": ["masto", "fedi"]
+    }
+]

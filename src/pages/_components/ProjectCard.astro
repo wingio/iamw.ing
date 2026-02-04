@@ -1,6 +1,6 @@
 ---
 import Card from "@components/Card.astro";
-import colors from "@assets/langColors.json";
+import languageColors from "@data/language_colors.json";
 
 import Star from "@icons/star.svg";
 
@@ -19,7 +19,7 @@ const stars =
 const avatarUrl = new URL(owner.avatar_url);
 avatarUrl.searchParams.set("size", "64");
 
-const langColor = colors[language as keyof typeof colors] || "#000" 
+const langColor = languageColors[language as keyof typeof languageColors] || "#000" 
 ---
 
 <a href={html_url}} target="_blank">

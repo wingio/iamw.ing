@@ -1,13 +1,20 @@
 ---
-import { SocialsMap } from "@scripts/socials";
+import socials from "@data/socials.json";
 import type { GetStaticPaths } from "astro";
+import type { SocialAccount } from "src/types";
 
+// Generates all possible social names (e.g. /on/github, /on/gh)
 export const getStaticPaths = (() => {
-    return Object.keys(SocialsMap).map( (key) => { return { params: { social: key } } });
+    const keys = (socials as SocialAccount[]).flatMap((social) => { return [social.service.toLowerCase(), ...social.aliases] })
+    return keys.map( (key) => { return { params: { social: key } } });
 }) satisfies GetStaticPaths;
 
-// @ts-ignore
-const account: SocialAccount = SocialsMap[Astro.params.social]
+// Retrieves the social metadata from a key
+const { social } = Astro.params
+const account: SocialAccount = socials
+    .find((account) => {
+        return account.aliases.includes(social) || social === account.service.toLowerCase()
+    })!
 ---
 
 <!DOCTYPE html>
