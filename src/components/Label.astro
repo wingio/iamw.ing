@@ -1,10 +1,10 @@
 ---
-interface Props {
-    class?: string
-}
+import type { HTMLAttributes } from 'astro/types'
+
+export type Props = HTMLAttributes<"p">
 ---
 
-<p class={Astro.props.class}>
+<p {...Astro.props}>
     <slot />
 </p>
 

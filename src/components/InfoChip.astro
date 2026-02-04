@@ -1,4 +1,10 @@
-<div class="chip">
+---
+import type { HTMLAttributes } from 'astro/types'
+
+export type Props = HTMLAttributes<"div">
+---
+
+<div class="chip" {...Astro.props}>
     <slot name="icon" />
     <slot />
 </div>

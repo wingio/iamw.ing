@@ -1,12 +1,10 @@
 ---
-interface Props {
-    class?: string
-    id?: string
-    "data-url"?: string
-}
+import type { HTMLAttributes } from 'astro/types'
+
+export type Props = HTMLAttributes<"div">
 ---
 
-<div class={Astro.props.class} id={Astro.props.id} data-url={Astro.props['data-url']}>
+<div {...Astro.props}>
     <slot />
 </div>
 
