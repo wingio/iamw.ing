@@ -23,6 +23,9 @@ jobs:
         uses: withastro/action@v6
         with:
           package-manager: pnpm@latest
+          cache: true
+          node-version: 26
+          build-cmd: pnpm approve-builds && pnpm run build
 
   deploy:
     needs: build
