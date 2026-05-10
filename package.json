@@ -1,6 +1,6 @@
 {
     "name": "iamw.ing",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "My personal site",
     "scripts": {
         "dev": "astro dev",
