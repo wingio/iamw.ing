@@ -1,124 +1,128 @@
 ---
-import Card from "@components/Card.astro"
 import Label from "@components/Label.astro"
-import MusicPlaceholder from "@assets/music.svg"
 ---
 
-<Card class="np-section" id="np-section">
-    <Label>Listening To</Label>
+<div class="np-card" id="now-playing">
+    <img id="np-art" crossorigin="anonymous" draggable="false" alt="" />
+    <span class="np-art-gradient" />
+
     <div class="np">
-        <div class="np-art-container">
-            <img id="np-art"/>
-            <MusicPlaceholder id="np-placeholder" mode="inline" />
-        </div>
+        <Label style="color: var(--np-accent)">Listening To</Label>
 
         <div class="np-info">
             <p id="np-song"></p>
             <p id="np-artist"></p>
         </div>
     </div>
-</Card>
+</div>
 
 <script>
+    import MusicIcon from "@assets/music.svg"
+    import { getTheme } from "@scripts/theme";
     import { DEFAULT_IMAGE_ID, getNowPlaying } from "@scripts/lastfm";
+    import { hexFromArgb, themeFromImage } from "@material/material-color-utilities";
 
-    function updateNowPlaying() {
-        getNowPlaying()
-            .then((track) => {
-                // @ts-expect-error
-                document.querySelector(".np-section")!.style.setProperty("display", typeof track != "undefined" ? "block" : "none");
-                document.getElementById("np-song")!.innerText = track?.name || "";
-                document.getElementById("np-artist")!.innerText = track?.artist?.["#text"] || "";
+    const card   = (document.getElementById("now-playing") as HTMLDivElement)
+    const art    = (document.getElementById("np-art") as HTMLImageElement)
+    const song   = (document.getElementById("np-song") as HTMLParagraphElement)
+    const artist = (document.getElementById("np-artist") as HTMLParagraphElement)
 
-                let artUrl = track?.image[3]?.["#text"];
-                let art = (document.getElementById("np-art") as HTMLImageElement)
+    let updateNowPlaying = () => getNowPlaying().then(track => {
+        card.style.setProperty("display", track ? "flex" : "none"); // Card is invisible by default to prevent flashing on page load
+        if (!track) return;
 
-                art.src = artUrl || "";
-                art.alt = track?.name || "";
-                art.style.setProperty("display", artUrl?.includes(DEFAULT_IMAGE_ID) ? "none" : "block")
-                document.getElementById("np-placeholder")!.style.setProperty("display", artUrl?.includes(DEFAULT_IMAGE_ID) ? "block" : "none")
-            })
-    }
+        song.innerText = track.name || "";
+        artist.innerText = track.artist?.["#text"] || "";
 
-    setInterval(updateNowPlaying, 10000)
+        let artUrl = track.image[3]?.["#text"];
+        art.src = artUrl?.includes(DEFAULT_IMAGE_ID) ? MusicIcon.src : artUrl;
+        
+        // The 'Now Playing' card uses colors based on the album art of the current song
+        themeFromImage(art).then(theme => { 
+            const systemDark = ["dark", "mocha"].includes(getTheme());
+            const colorScheme = systemDark ? theme.schemes.dark : theme.schemes.light;
+
+            card.style.setProperty("--np-background", hexFromArgb(colorScheme.primaryContainer))
+            card.style.setProperty("--np-accent", hexFromArgb(colorScheme.primary))
+            card.style.setProperty("--np-text", hexFromArgb(colorScheme.onPrimaryContainer))
+        }).catch(e => console.error(e));
+    })
+
+    setInterval(updateNowPlaying, 10_000)
     updateNowPlaying()
 </script>
 
 <style lang="scss">
-    .np {
-        display: flex;
-        align-items: center;
-        gap: 0.8em;
-        margin-top: 1em;
-
-        --art-size: 2.7em;
-    }
-
-    .np-section {
+    .np-card {
         display: none;
-    }
-
-    #np-art {
-        width: var(--art-size);
-        height: var(--art-size);
-        border-radius: 20%;
-        display: none;
-    }
-
-    .np-art-container {
-        width: var(--art-size);
-        height: var(--art-size);
-        color: var(--primary);
-        background-color: var(--secondaryContainer);
-        border-radius: 20%;
-        box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.2);
-
-        :global(svg) {
-            width: var(--art-size);
-            height: var(--art-size);
-        }
-    }
-
-    .np-info {
-        display: flex;
         flex-direction: column;
-        gap: 0.3em;
-        overflow: hidden;
+        border-radius: 24px;
+        background-color: var(--np-background);
+        height: min-content;
+        width: 100%;
+        z-index: -2;
+        anchor-name: --np-card;
 
-        p {
-            margin: 0;
+        --np-background: var(--container);
+        --np-accent: var(--onSurfaceAlt);
+        --np-text: var(--primary);
+
+        #np-art {
+            position: absolute;
+            position-anchor: --np-card;
+            right: anchor(right);
+            z-index: -1;
+            height: anchor-size();
+            aspect-ratio: 1 / 1;
+            border-radius: 0 24px 24px 0;
+            opacity: 0.6;
         }
-    }
 
-    #np-song {
-        font-size: 14px;
-        font-weight: bold;
-        color: var(--primary);
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+        // Ideally this would be a psuedo-element (#np-art::before) but that wouldn't work for some reason (CSS is perfect and awesome!)
+        .np-art-gradient {
+            position: absolute;
+            position-anchor: --np-card;
+            right: anchor(right);
+            z-index: -1;
+            height: anchor-size();
+            aspect-ratio: 1 / 1;
+            border-radius: 0 24px 24px 0;
+            background: linear-gradient(90deg, var(--np-background) 5%, transparent)
+        }
 
-    #np-artist {
-        font-size: 11px;
-        color: var(--onSurfaceAlt);
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    @media screen and (max-width: 970px) {
         .np {
-            gap: 1em;
-            --art-size: 3.5em;
-        }
+            display: flex;
+            flex-direction: column;
+            gap: 0.8em;
+            padding: 24px;
+            z-index: 1;
 
-        #np-song {
-            font-size: 18px;
-        }
+            .np-info {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3em;
+                overflow: hidden;
+                margin-top: 0.8em;
 
-        #np-artist {
-            font-size: 14px;
+                #np-song {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin: 0;
+                    color: var(--np-text);
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+
+                #np-artist {
+                    font-size: 12px;
+                    margin: 0;
+                    color: var(--np-text);
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
         }
-	}
+    }
 </style>

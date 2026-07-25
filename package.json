@@ -1,6 +1,6 @@
 {
     "name": "iamw.ing",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "My personal site",
     "scripts": {
         "dev": "astro dev",
@@ -9,6 +9,7 @@
     },
     "dependencies": {
         "@astrojs/svelte": "^7.2.5",
+        "@material/material-color-utilities": "^0.4.0",
         "astro": "^5.17.1",
         "sass": "^1.97.3",
         "svelte": "^5.49.1"
