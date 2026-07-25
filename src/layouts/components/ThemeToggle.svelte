@@ -11,7 +11,7 @@
     }
 </script>
 
-<button onclick={onClick} name="Toggle theme">
+<button onclick={onClick} aria-label="Toggle theme">
     <div>
         <!-- svelte-ignore slot_element_deprecated -->
         {#if toggled}
