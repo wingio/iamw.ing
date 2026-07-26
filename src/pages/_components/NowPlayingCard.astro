@@ -1,8 +1,10 @@
 ---
 import Label from "@components/Label.astro"
+import MusicIcon from "@assets/music.svg"
 ---
 
 <div class="np-card" id="now-playing">
+    <MusicIcon class="np-art-placeholder" mode="inline"/>
     <img id="np-art" crossorigin="anonymous" draggable="false" alt="" />
     <span class="np-art-gradient" />
 
@@ -17,7 +19,6 @@ import Label from "@components/Label.astro"
 </div>
 
 <script>
-    import MusicIcon from "@assets/music.svg"
     import { getTheme } from "@scripts/theme";
     import { getThemeFromImage } from "@scripts/color";
     import { DEFAULT_IMAGE_ID, getNowPlaying } from "@scripts/lastfm";
@@ -36,7 +37,8 @@ import Label from "@components/Label.astro"
         artist.innerText = track.artist?.["#text"] || "";
 
         let artUrl = track.image[3]?.["#text"];
-        art.src = artUrl?.includes(DEFAULT_IMAGE_ID) ? MusicIcon.src : artUrl;
+        art.style.setProperty("display", artUrl?.includes(DEFAULT_IMAGE_ID) ? "none" : "block");
+        art.src = artUrl || "";
         
         // The 'Now Playing' card uses colors based on the album art of the current song
         getThemeFromImage(art).then(theme => { 
@@ -68,15 +70,16 @@ import Label from "@components/Label.astro"
         --np-accent: var(--onSurfaceAlt);
         --np-text: var(--primary);
 
-        #np-art {
+        #np-art, .np-art-placeholder {
             position: absolute;
             position-anchor: --np-card;
             right: anchor(right);
             z-index: -1;
             height: anchor-size();
+            width: min-content;
             aspect-ratio: 1 / 1;
             border-radius: 0 24px 24px 0;
-            opacity: 0.6;
+            color: var(--np-accent);
         }
 
         // Ideally this would be a psuedo-element (#np-art::before) but that wouldn't work for some reason (CSS is perfect and awesome!)
