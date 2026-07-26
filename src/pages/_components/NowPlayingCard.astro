@@ -19,8 +19,9 @@ import Label from "@components/Label.astro"
 <script>
     import MusicIcon from "@assets/music.svg"
     import { getTheme } from "@scripts/theme";
+    import { getThemeFromImage } from "@scripts/color";
     import { DEFAULT_IMAGE_ID, getNowPlaying } from "@scripts/lastfm";
-    import { hexFromArgb, themeFromImage } from "@material/material-color-utilities";
+    import { hexFromArgb } from "@material/material-color-utilities";
 
     const card   = (document.getElementById("now-playing") as HTMLDivElement)
     const art    = (document.getElementById("np-art") as HTMLImageElement)
@@ -38,7 +39,7 @@ import Label from "@components/Label.astro"
         art.src = artUrl?.includes(DEFAULT_IMAGE_ID) ? MusicIcon.src : artUrl;
         
         // The 'Now Playing' card uses colors based on the album art of the current song
-        themeFromImage(art).then(theme => { 
+        getThemeFromImage(art).then(theme => { 
             const systemDark = ["dark", "mocha"].includes(getTheme());
             const colorScheme = systemDark ? theme.schemes.dark : theme.schemes.light;
 
