@@ -2,14 +2,15 @@
 interface Props {
     name: string,
     github: string,
-    url?: string
+    url?: string,
+    avatar?: string
 }
 
-const { name, github, url = `https://github.com/${github}` } = Astro.props
+const { name, github, url = `https://github.com/${github}`, avatar = `https://github.com/${github}.png?size=256` } = Astro.props
 ---
 
 <a class="friend" aria-label={`Visit ${name}'s website'`} href={url} target="_blank">
-    <img class="avatar" src={`https://github.com/${github}.png?size=256`} alt={`${name}'s avatar`}>
+    <img class="avatar" src={avatar} alt={`${name}'s avatar`}>
 </a>
 
 <style lang="scss">
