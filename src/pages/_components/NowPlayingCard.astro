@@ -5,45 +5,44 @@ import MusicIcon from "@assets/music.svg"
 
 <div class="np-card" id="now-playing">
     <MusicIcon class="np-art-placeholder" mode="inline"/>
-    <img id="np-art" crossorigin="anonymous" draggable="false" alt="" />
-    <span class="np-art-gradient" />
+    <img class="np-art" crossorigin="anonymous" draggable="false" alt=""/>
+    <span class="np-art-gradient"/>
 
     <div class="np">
         <Label style="color: var(--np-accent)">Listening To</Label>
 
         <div class="np-info">
-            <p id="np-song"></p>
-            <p id="np-artist"></p>
+            <p class="np-song"/>
+            <p class="np-artist"/>
         </div>
     </div>
 </div>
 
 <script>
-    import { getTheme } from "@scripts/theme";
+    import { isDarkTheme } from "@scripts/theme";
     import { getThemeFromImage } from "@scripts/color";
     import { DEFAULT_IMAGE_ID, getNowPlaying } from "@scripts/lastfm";
     import { hexFromArgb } from "@material/material-color-utilities";
 
-    const card   = (document.getElementById("now-playing") as HTMLDivElement)
-    const art    = (document.getElementById("np-art") as HTMLImageElement)
-    const song   = (document.getElementById("np-song") as HTMLParagraphElement)
-    const artist = (document.getElementById("np-artist") as HTMLParagraphElement)
+    const card   = document.getElementsByClassName("np-card")[0]   as HTMLDivElement
+    const art    = document.getElementsByClassName("np-art")[0]    as HTMLImageElement
+    const song   = document.getElementsByClassName("np-song")[0]   as HTMLParagraphElement
+    const artist = document.getElementsByClassName("np-artist")[0] as HTMLParagraphElement
 
     let updateNowPlaying = () => getNowPlaying().then(track => {
         card.style.setProperty("display", track ? "flex" : "none"); // Card is invisible by default to prevent flashing on page load
         if (!track) return;
 
-        song.innerText = track.name || "";
-        artist.innerText = track.artist?.["#text"] || "";
+        song.innerText = track.name;
+        artist.innerText = track.artist["#text"];
 
-        let artUrl = track.image[3]?.["#text"];
-        art.style.setProperty("display", artUrl?.includes(DEFAULT_IMAGE_ID) ? "none" : "block");
-        art.src = artUrl || "";
+        let artUrl = track.image[3]["#text"];
+        art.style.setProperty("display", artUrl.includes(DEFAULT_IMAGE_ID) ? "none" : "block");
+        art.src = artUrl;
         
         // The 'Now Playing' card uses colors based on the album art of the current song
         getThemeFromImage(art).then(theme => { 
-            const systemDark = ["dark", "mocha"].includes(getTheme());
-            const colorScheme = systemDark ? theme.schemes.dark : theme.schemes.light;
+            const colorScheme = isDarkTheme() ? theme.schemes.dark : theme.schemes.light;
 
             card.style.setProperty("--np-background", hexFromArgb(colorScheme.primaryContainer))
             card.style.setProperty("--np-accent", hexFromArgb(colorScheme.primary))
@@ -70,7 +69,7 @@ import MusicIcon from "@assets/music.svg"
         --np-accent: var(--onSurfaceAlt);
         --np-text: var(--primary);
 
-        #np-art, .np-art-placeholder {
+        .np-art, .np-art-placeholder, .np-art-gradient {
             position: absolute;
             position-anchor: --np-card;
             right: anchor(right);
@@ -82,16 +81,9 @@ import MusicIcon from "@assets/music.svg"
             color: var(--np-accent);
         }
 
-        // Ideally this would be a psuedo-element (#np-art::before) but that wouldn't work for some reason (CSS is perfect and awesome!)
         .np-art-gradient {
-            position: absolute;
-            position-anchor: --np-card;
-            right: anchor(right);
-            z-index: -1;
-            height: anchor-size();
-            aspect-ratio: 1 / 1;
-            border-radius: 0 24px 24px 0;
-            background: linear-gradient(90deg, var(--np-background) 5%, transparent)
+            background: linear-gradient(90deg, var(--np-background) 5%, transparent);
+            aspect-ratio: 1.01 / 1; // Making the gradient a tiny bit wider reduces some artifacts (was most noticible in light mode)
         }
 
         .np {
@@ -108,9 +100,8 @@ import MusicIcon from "@assets/music.svg"
                 overflow: hidden;
                 margin-top: 0.8em;
 
-                #np-song {
-                    font-size: 18px;
-                    font-weight: bold;
+                .np-song, .np-artist {
+                    font-size: 12px;
                     margin: 0;
                     color: var(--np-text);
                     overflow: hidden;
@@ -118,13 +109,9 @@ import MusicIcon from "@assets/music.svg"
                     text-overflow: ellipsis;
                 }
 
-                #np-artist {
-                    font-size: 12px;
-                    margin: 0;
-                    color: var(--np-text);
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
+                .np-song {
+                    font-size: 18px;
+                    font-weight: bold;
                 }
             }
         }

@@ -27,3 +27,7 @@ export function getTheme() {
 
     return currentTheme;
 }
+
+export function isDarkTheme() {
+    return ["dark", "mocha"].includes(getTheme());
+}
