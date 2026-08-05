@@ -12,6 +12,11 @@ body {
     color: var(--onSurface);
 }
 
+* {
+    transition-property: color,background;
+    transition: 0.25s;
+}
+
 ::-webkit-scrollbar {
     width: 0.5em;
 }

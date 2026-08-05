@@ -49,8 +49,10 @@ const langColor = languageColors[language as keyof typeof languageColors] || "#0
 
 <style lang="scss">
     .repoCard {
-        transition: scale 0.2s;
         position: relative;
+        transition: scale 0.2s, 
+                    background 0.25s, 
+                    color 0.25s;
 
         &:hover {
             scale: 1.01;
