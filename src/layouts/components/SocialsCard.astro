@@ -38,10 +38,29 @@ import Mastodon from "@icons/social/mastodon.svg";
 
 <style lang="scss">
     @media screen and (max-width: 970px) {
+        .socials {
+            width: min-content;
+            align-self: center;
+        }
+
         .content {
             display: flex;
-            gap: 1.5em;
-            justify-content: space-between;
+            gap: 3em;
+        }
+
+        .label {
+            display: none;
         }
 	}
+
+    @media screen and (max-width: 450px) {
+        .socials {
+            width: stretch;
+        }
+
+        .content {
+            gap: 1.5em;
+            justify-content: space-around;
+        }
+    }
 </style>
