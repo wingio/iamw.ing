@@ -12,6 +12,8 @@ import Default from '@layouts/Default.astro';
 ---
 
 <Default title="Wing - Home" description="23 year old Android dev and an okay designer.">
+	<link rel="discord:component-embed" type="application/json" href={Astro.site + "embed/discord.json"} slot="head" />
+
 	<NowPlayingCard slot="sidebar" />
 
 	<Card id="about">
