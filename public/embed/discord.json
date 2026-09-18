@@ -23,7 +23,7 @@
             { "type": 2, "style": 5, "label": "GitHub", "url": "https://github.com/wingio", "emoji": { "name": "github", "id": "1550638098310893598" } },
             { "type": 2, "style": 5, "label": "Bluesky", "url": "https://bsky.app/profile/iamw.ing", "emoji": { "name": "bsky", "id": "1550641341497745548" } },
             { "type": 2, "style": 5, "label": "Mastodon", "url": "https://androiddev.social/@wing", "emoji": { "name": "masto", "id": "1550641408841359400" } },
-            { "type": 2, "style": 5, "label": "Sponsor", "url": "https://github.com/sponsors/wingio", "emoji": { "name": "heart", "id": null } }
+            { "type": 2, "style": 5, "label": "Sponsor", "url": "https://github.com/sponsors/wingio", "emoji": { "name": "❤️" } }
         ]
       }
     ]
