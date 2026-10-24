@@ -16,5 +16,11 @@
         "service": "Mastodon",
         "baseUrl": "https://androiddev.social/@",
         "aliases": ["masto", "fedi"]
+    },
+    {
+        "username": "wing",
+        "service": "Codeberg",
+        "baseUrl": "https://codeberg.org/",
+        "aliases": ["codeberg", "cb", "codeburger"]
     }
 ]

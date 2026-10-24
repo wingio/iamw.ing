@@ -4,6 +4,7 @@ import Label from "@components/Label.astro";
 import SocialAccount from "@components/SocialAccount.astro";
 
 import Bluesky from "@icons/social/bluesky.svg";
+import Codeberg from "@icons/social/codeberg.svg";
 import Discord from "@icons/social/discord.svg";
 import Email from "@icons/email.svg";
 import GitHub from "@icons/social/github.svg";
@@ -14,6 +15,10 @@ import Mastodon from "@icons/social/mastodon.svg";
     <Label class="label">Socials</Label>
 
     <div class="content">
+        <SocialAccount url="https://codeberg.org/wing">
+            <Codeberg /> @wing
+        </SocialAccount>
+
         <SocialAccount url="https://github.com/wingio">
             <GitHub /> @wingio
         </SocialAccount>

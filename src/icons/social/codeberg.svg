@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" style="isolation:isolate" viewBox="0 0 24 24">
+  <linearGradient id="pyramid-side" x1="0" x2=".5" y1="0" y2="1" gradientTransform="matrix(10 0 0 18 12 5.4)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="currentColor" offset="0%" stop-opacity="0"/>
+      <stop stop-color="currentColor" offset="48.8%" stop-opacity=".3"/>
+      <stop stop-color="currentColor" offset="100%" stop-opacity=".3"/>
+    </linearGradient>
+
+    <path fill="url(#pyramid-side)" d="M12 5.4 16.6 23a12 12 0 0 0 5.5-4.6l-10-13z"/>
+    <path fill="currentColor" d="M12 0A12 12 0 0 0 1.8 18.4l10-13h.4l10 13A12 12 0 0 0 12 0"/>
+</svg>
